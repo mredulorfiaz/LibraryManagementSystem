@@ -27,6 +27,18 @@ namespace LibraryManagement
             services.AddControllersWithViews();
             services.AddDbContext<LibraryContext>(
                     options => options.UseSqlServer(Configuration.GetConnectionString("DevConn")));
+
+            // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSingleton(Configuration);
+            services.AddScoped<ILibraryCardService, LibraryCardService>();
+            services.AddScoped<ILibraryBranchService, LibraryBranchService>();
+            services.AddScoped<IPatronService, PatronService>();
+            services.AddScoped<ICheckoutService, CheckoutService>();
+            services.AddScoped<ILibraryAssetService, LibraryAssetService>();
+            services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IVideoService, VideoService>();
+            services.AddScoped<IStatusService, StatusService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
